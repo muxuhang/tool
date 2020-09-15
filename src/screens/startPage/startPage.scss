@@ -38,12 +38,12 @@
             height: 1.5715rem;
             width: 1.5715rem;
           }
-          .ant-popover-inner-content{
-            padding: 0;
-          }
         }
       }
     }
   }
+}
+.ant-popover-inner-content{
+  padding: 0 !important;
 }
   

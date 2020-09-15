@@ -1,3 +1,10 @@
+/*
+  简单启动页制作
+  作者 muxuhang
+  创建于 2020年9月15日
+*/
+
+
 import { Button, Col, Input, Popover, Row, Select, Slider, Upload } from 'antd';
 import Grid from 'antd/lib/card/Grid';
 import React, { createRef, useEffect, useRef, useState } from 'react';
@@ -43,14 +50,6 @@ function StartPage() {
     }
   }
   // 修改图标
-  const onChangeImage = (e) => {
-    const files = e.target.files[0]
-    const reader = new FileReader()
-    reader.onload = function (e) {
-      setSource(e.target.result)
-    }
-    reader.readAsDataURL(files)
-  }
   const handleChange = info => {
     const reader = new FileReader();
     reader.addEventListener('load', () => setSource(reader.result));
@@ -182,7 +181,7 @@ function StartPage() {
             <label className='item_title'>背景颜色</label>
             <Row className='color_lump'>
               <Input
-                defaultValue={fillStyle}
+                value={fillStyle}
                 className='lump'
                 onChange={e => setFillStyle(e.target.value)}
               ></Input>
