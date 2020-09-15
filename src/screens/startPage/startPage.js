@@ -7,7 +7,7 @@
 
 import { Button, Col, Input, Popover, Row, Select, Slider, Upload } from 'antd';
 import Grid from 'antd/lib/card/Grid';
-import React, { createRef, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SketchPicker } from 'react-color';
 import { PlusOutlined } from '@ant-design/icons';
 import './startPage.scss';

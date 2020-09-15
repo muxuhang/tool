@@ -1,10 +1,14 @@
+import { Button } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import './home.scss'
 function Home() {
   return (
-    <div className="container">
-      <Link to='/startPage'>生成图片</Link>
+    <div className="container home">
+      <Button className='home_btn' type='primary'><Link to='/startPage'>启动页生成</Link></Button>
+      <Button className='home_btn' type='primary'><Link to='/qrCode'>二维码生成</Link></Button>
+      <Button className='home_btn' type='primary'><Link to='/videoReduce'>视频压缩</Link></Button>
+      <Button className='home_btn' type='primary'><Link to='/imageReduce'>图片压缩</Link></Button>
     </div>
   );
 }
