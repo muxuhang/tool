@@ -1,25 +1,29 @@
 import { Menu } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 function Header() {
-  const [index,setIndex] = useState(0)
+  const [index, setIndex] = useState(null)
   const history = useHistory()
   const menuList = [
-    { key: '/home', name: '首页' },
+    { key: '/index', name: '首页' },
     { key: '/boot-page', name: '启动页生成' },
     { key: '/qr-code', name: '二维码生成' },
   ]
+  useEffect(() => {
+    getIndex(history.location.pathname)
+  }, [])
   const handleClick = (e) => {
     let path = `${e.key}`
     getIndex(path)
-    if(e.key==='/home') path = '/'
+    if (path == '/index') path = '/'
     history.push(path)
   }
-  const getIndex = (path) =>{
-    menuList.map((item,index)=>{
-      if(path===item.key){
-        setIndex(index)
-      }else{
+  const getIndex = (path) => {
+    if (path == '/') path = '/index'
+    menuList.map((item, i) => {
+      if (path === item.key) {
+        setIndex(i)
+      } else {
         return null
       }
     })
@@ -27,7 +31,7 @@ function Header() {
   return (
     <Menu
       onClick={handleClick}
-      selectedKeys={menuList[index].key}
+      selectedKeys={typeof index === 'number' ? menuList[index].key : null}
       theme={'dark'}
       mode="horizontal">
       {menuList.map((item) => <Menu.Item key={item.key}>{item.name}</Menu.Item>)}

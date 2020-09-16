@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import { Route, HashRouter as Router } from 'react-router-dom';
+import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import Home from './screens/home/home';
 import BootPage from './screens/boot-page/boot-page';
 import Header from './components/header';
 import { Layout } from 'antd';
 import QrCode from './screens/qr-code/qr-code';
+import NotFound from './screens/not-found/not-found';
 function App() {
   return (
     <Router>
@@ -14,16 +15,14 @@ function App() {
           <Header></Header>
         </Layout.Header>
         <Layout.Content>
-          <Route path='/' exact>
-            <Home></Home>
-          </Route>
-          <Route path='/boot-page'>
-            <BootPage></BootPage>
-          </Route>
-          <Route path='/qr-code'>
-            <QrCode></QrCode>
-          </Route>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/boot-page' component={BootPage} />
+            <Route path='/qr-code' component={QrCode} />
+            <Route component={NotFound}></Route>
+          </Switch>
         </Layout.Content>
+        <Layout.Footer></Layout.Footer>
       </Layout>
     </Router>
   );
