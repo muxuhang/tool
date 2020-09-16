@@ -10,8 +10,8 @@ import Grid from 'antd/lib/card/Grid';
 import React, { useEffect, useRef, useState } from 'react';
 import { SketchPicker } from 'react-color';
 import { PlusOutlined } from '@ant-design/icons';
-import './startPage.scss';
-function StartPage() {
+import './boot-page.scss';
+function BootPage() {
   // 初始icon
   const [source, setSource] = useState(require('../../images/icon.png'))
   // 生成图片宽度/px
@@ -81,7 +81,7 @@ function StartPage() {
     { name: '1x(竖屏)', width: 320, height: 480 },
   ]
   return (
-    <div className="container start_page">
+    <div className="container boot-page">
       <div className='start_flex'>
         <div className='flex_left'>
           <canvas
@@ -205,4 +205,4 @@ function StartPage() {
   );
 }
 
-export default StartPage;
+export default BootPage;

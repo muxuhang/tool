@@ -5,8 +5,8 @@ import './home.scss'
 function Home() {
   return (
     <div className="container home">
-      <Button className='home_btn' type='primary'><Link to='/startPage'>启动页生成</Link></Button>
-      <Button className='home_btn' type='primary'><Link to='/qrCode'>二维码生成</Link></Button>
+      <Button className='home_btn' type='primary'><Link to='/boot-page'>启动页生成</Link></Button>
+      <Button className='home_btn' type='primary'><Link to='/qr-code'>二维码生成</Link></Button>
       <Button className='home_btn' type='primary'><Link to='/videoReduce'>视频压缩</Link></Button>
       <Button className='home_btn' type='primary'><Link to='/imageReduce'>图片压缩</Link></Button>
     </div>
