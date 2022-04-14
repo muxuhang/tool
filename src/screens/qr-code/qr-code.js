@@ -1,8 +1,7 @@
 import { Button, Col, Input, Row, Switch, Upload } from 'antd';
-import Grid from 'antd/lib/card/Grid';
 import { UploadOutlined } from '@ant-design/icons';
 import TextArea from 'antd/lib/input/TextArea';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode.react'
 import './qr-code.scss';
 import logo from './../../images/M.png'
@@ -12,7 +11,6 @@ function QrCode() {
   const [size, setSize] = useState(160)
   const [source, setSource] = useState(logo)
   const [imageSetting, setImageSetting] = useState(null)
-  const canvasRef = useRef()
   useEffect(() => {
     setImageSetting({
       src: source,

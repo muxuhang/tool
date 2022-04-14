@@ -1,0 +1,49 @@
+.boot-page{
+  .start_flex{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    .flex_left{
+      margin: 0 20px;
+      .canvas{
+        width: 375px;
+        box-shadow: 1px 4px 10px 2px #cccccc;
+        margin: auto;
+        border-radius: .2rem;
+        display: block;
+      }
+    }
+    .flex_right{
+      flex: 1;
+      .right_item{
+        label{
+          display: block;
+          font-size: 1rem;
+          font-weight: 500;
+          padding: 1rem 0;
+        }
+        .color_lump{
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 1rem;
+          position: relative;
+          .lump{
+            height: 1.5715rem;
+            line-height: 1.5715rem;
+            width: 6rem;
+            text-align: center;
+            border: 1px solid #d9d9d9;
+          }
+          .ant-btn{
+            height: 1.5715rem;
+            width: 1.5715rem;
+          }
+        }
+      }
+    }
+  }
+}
+.ant-popover-inner-content{
+  padding: 0 !important;
+}
+  

@@ -7,19 +7,23 @@ function Header() {
   const menuList = [
     { key: '/index', name: '首页' },
     { key: '/boot-page', name: '启动页生成' },
+    { key: '/logo-page', name: '启动图标生成' },
     { key: '/qr-code', name: '二维码生成' },
+    { key: '/chinese-chess', name: '中国象棋' },
   ]
   useEffect(() => {
-    getIndex(history.location.pathname)
+    if (history.location.pathname) {
+      getIndex(history.location.pathname)
+    }
   }, [])
   const handleClick = (e) => {
     let path = `${e.key}`
     getIndex(path)
-    if (path == '/index') path = '/'
+    if (path === '/index') path = '/'
     history.push(path)
   }
   const getIndex = (path) => {
-    if (path == '/') path = '/index'
+    if (path === '/') path = '/index'
     menuList.map((item, i) => {
       if (path === item.key) {
         setIndex(i)
