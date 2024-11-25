@@ -26,17 +26,14 @@ function BootPage() {
   const [fillStyle, setFillStyle] = useState('#ffffff')
   const canvasRef = useRef()
   const [imgurl, setImgUrl] = useState('')
-  useEffect(() => {
-    painting()
-  }, [sizew, sizeh, fillStyle, source, scale, marginVertical, marginHorizontal])
   // 初始化canvas
-  const painting = () => {
+  const painting = (sizew, sizeh, fillStyle, scale, marginVertical, marginHorizontal) => {
     const canvas = canvasRef.current
     if (canvas.getContext) {
-      var ctx = canvas.getContext('2d')
+      let ctx = canvas.getContext('2d')
       ctx.fillStyle = fillStyle
       ctx.fillRect(0, 0, sizew, sizeh)
-      var image = document.getElementById('source')
+      let image = document.getElementById('source')
       const drawImageWidht =
         sizew <= sizeh
           ? sizew * scale
@@ -45,7 +42,6 @@ function BootPage() {
         sizew <= sizeh
           ? sizew * scale * (image.height / image.width)
           : sizeh * scale
-      console.log(drawImageWidht, drawImageHeight)
       ctx.drawImage(
         image,
         sizew * marginVertical - drawImageWidht / 2,
@@ -55,6 +51,9 @@ function BootPage() {
       )
     }
   }
+  useEffect(() => {
+    painting(sizew, sizeh, fillStyle, scale, marginVertical, marginHorizontal)
+  }, [sizew, sizeh, fillStyle, source, scale, marginVertical, marginHorizontal])
   // 修改图标
   const handleChange = (info) => {
     const reader = new FileReader()
@@ -64,7 +63,7 @@ function BootPage() {
   // canvas 转图片并下载
   const CanvasToImage = () => {
     const canvas = canvasRef.current
-    const dom = document.createElement('a')
+    // const dom = document.createElement('a')
     const image = new Image()
     image.src = canvas.toDataURL('image/png')
     setImgUrl(image.src)
