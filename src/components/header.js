@@ -32,7 +32,6 @@ export default function Header() {
       }
     })
   }
-  
   return (
     <Menu
       onClick={handleClick}
