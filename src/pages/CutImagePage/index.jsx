@@ -56,6 +56,23 @@ export default function CutImagePage() {
             config.width * image.height / image.width
           ctx.clearRect(0, 0, drawImageWidth * scale, drawImageHeight * scale)
           ctx.fillStyle = "rgba(255, 0, 0, 0)"
+          // 绘制圆角矩形路径
+          ctx.beginPath()
+          const x = 0, y = 0
+          const width = config.width,
+            height = config.height,
+            radius = config.radius
+          ctx.moveTo(x + radius, 0)
+          ctx.lineTo(x + width - radius, y)
+          ctx.arcTo(x + width, y, x + width, y + radius, radius)
+          ctx.lineTo(x + width, y + height - radius)
+          ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius)
+          ctx.lineTo(x + radius, y + height)
+          ctx.arcTo(x, y + height, x, y + height - radius, radius)
+          ctx.lineTo(x, y + radius)
+          ctx.arcTo(x, y, x + radius, y, radius)
+          ctx.closePath()
+          ctx.clip()
           ctx.fillRect(0, 0, config.width, config.height)
           ctx.drawImage(
             image,
@@ -85,7 +102,7 @@ export default function CutImagePage() {
   }
   return <div className="container mx-auto">
     <div className="flex p-2">
-      <div className='bg-gray-50 flex items-center justify-center overflow-hidden' style={{
+      <div className='bg-gray-100 flex items-center justify-center overflow-hidden' style={{
         width: 600,
         height: 600
       }}>
@@ -125,6 +142,12 @@ export default function CutImagePage() {
           max={100}
           defaultValue={imageConfig.scale}
           onChange={(scale) => { setImageConfig(config => ({ ...config, scale: scale })) }}></Slider>
+        <div className="label">圆角(px)</div>
+        <Slider
+          min={0}
+          max={(imageConfig.height > imageConfig.width ? imageConfig.height : imageConfig.width) / 2}
+          defaultValue={imageConfig.radius}
+          onChange={(radius) => { setImageConfig(config => ({ ...config, radius })) }}></Slider>
         <Button
           type='primary'
           onClick={() => canvasToImage()}>
