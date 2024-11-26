@@ -3,6 +3,10 @@ import { UploadOutlined } from '@ant-design/icons'
 import TextArea from 'antd/lib/input/TextArea'
 import React, { useEffect, useState } from 'react'
 import { QRCodeCanvas } from 'qrcode.react'
+/**
+ * @author muxuhang
+ * @description 二维码生成 
+ */
 function QrCodePage() {
   const [text, setText] = useState('')
   const [useicon, setuseIcon] = useState(true)
