@@ -7,7 +7,7 @@ import { QRCodeCanvas } from 'qrcode.react'
  * @author muxuhang
  * @description 二维码生成 
  */
-function QrCodePage() {
+export default function QrCodeCreatePage() {
   const [text, setText] = useState('')
   const [useicon, setuseIcon] = useState(true)
   const [size, setSize] = useState(160)
@@ -160,5 +160,3 @@ function QrCodePage() {
     </div>
   )
 }
-
-export default QrCodePage

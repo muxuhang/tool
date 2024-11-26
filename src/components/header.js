@@ -2,35 +2,30 @@ import { Menu } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 const menuList = [
-  { key: '/index', label: '首页' },
+  { key: '/', label: '首页' },
   // { key: '/boot', label: '启动页生成' },
   { key: '/cut-image', label: '图片裁剪' },
-  { key: '/qrcode', label: '二维码生成' },
+  { key: '/qrcode-create', label: '二维码生成' },
+  { key: '/qrcode-parse', label: '二维码解析' },
   // { key: '/chinese-chess', label: '中国象棋' },
 ]
 export default function Header() {
   const [index, setIndex] = useState(null)
   const navigate = useNavigate()
-  const getIndex = (path) => {
-    if (path === '/') path = '/index'
+  const getIndex = (hash = '') => {
+    const path = hash?.replace('#', '') || '/'
     menuList.forEach((item, i) => {
       if (path === item.key) {
         setIndex(i)
-      } else {
-        return null
       }
     })
   }
   useEffect(() => {
-    if (window.location.pathname) {
-      getIndex(window.location.pathname)
-    }
+    getIndex(window.location.hash)
   }, [])
-  const handleClick = (e) => {
-    let path = `${e.key}`
-    getIndex(path)
-    if (path === '/index') path = '/'
-    navigate(path)
+  const handleClick = ({ key }) => {
+    getIndex(key)
+    navigate(key)
   }
   return (
     <Menu
