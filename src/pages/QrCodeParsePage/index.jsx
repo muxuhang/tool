@@ -1,5 +1,4 @@
-import { Button, Col, Row, Upload } from 'antd'
-import TextArea from 'antd/lib/input/TextArea'
+import { Col, Row, Upload } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { PlusOutlined } from '@ant-design/icons'
 import jsQR from "jsqr"
@@ -9,7 +8,7 @@ import jsQR from "jsqr"
  */
 export default function QrCodeParsePage() {
   const [text, setText] = useState('')
-  const [errorText, setErrorText] = useState('点击右侧选择要识别的二维码')
+  const [errorText, setErrorText] = useState('点击左侧选择要识别的二维码')
   const [source, setSource] = useState('')
 
   const handleChange = (info) => {
@@ -21,7 +20,7 @@ export default function QrCodeParsePage() {
     const img = new Image()
     setText('')
     img.src = imgUrl
-    setErrorText('点击右侧选择要识别的二维码')
+    setErrorText('点击左侧选择要识别的二维码')
     img.onload = () => {
       const canvas = document.createElement("canvas")
       const ctx = canvas.getContext("2d")
@@ -47,9 +46,6 @@ export default function QrCodeParsePage() {
   return (
     <div className='m-3 container mx-auto'>
       <Row gutter={16}>
-        <Col flex={1}>
-          <div className='text-gray-500 bg-gray-50 h-28 p-2'>{text || errorText}</div>
-        </Col>
         <Col>
           <Upload
             name='avatar'
@@ -64,6 +60,9 @@ export default function QrCodeParsePage() {
               <PlusOutlined />
             )}
           </Upload>
+        </Col>
+        <Col flex={1}>
+          <div className='text-gray-500 bg-gray-50 h-28 p-2'>{text || errorText}</div>
         </Col>
       </Row>
     </div >

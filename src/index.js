@@ -5,12 +5,21 @@ import reportWebVitals from './reportWebVitals'
 import 'antd/dist/reset.css'
 import RouteSwitch from './router'
 import { HashRouter } from 'react-router-dom'
+import { ConfigProvider } from 'antd'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
+const customTheme = {
+  token: {
+    fontFamily: "AlimamaDaoLiTi, 'Segoe UI', 'Roboto',  'Ubuntu', sans-serif",
+    fontSize: 16,
+  },
+}
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <RouteSwitch />
+      <ConfigProvider theme={customTheme}>
+        <RouteSwitch />
+      </ConfigProvider>
     </HashRouter>
   </React.StrictMode>
 )

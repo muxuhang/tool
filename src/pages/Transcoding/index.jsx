@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import TextArea from 'antd/lib/input/TextArea'
-import { Divider, Radio } from 'antd'
-
+import { Divider, Radio, Input } from 'antd'
+const { TextArea } = Input
 export default function Transcoding(params) {
   const [main, setMain] = useState('native')
   const [editing, setEditing] = useState(false)
@@ -18,8 +17,8 @@ export default function Transcoding(params) {
   }, [unicode, native, editing])
   // 文本转unicode
   const nativeToUniCode = () => {
-    var ret = ''
-    for (var i = 0; i < native.length; i++) {
+    let ret = ''
+    for (let i = 0; i < native.length; i++) {
       ret += '\\u' + native.charCodeAt(i).toString(16)
     }
     setUnicode(ret)

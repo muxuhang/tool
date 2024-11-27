@@ -7,7 +7,7 @@ const menuList = [
   { key: '/cut-image', label: '图片裁剪' },
   { key: '/qrcode-create', label: '二维码生成' },
   { key: '/qrcode-parse', label: '二维码解析' },
-  // { key: '/chinese-chess', label: '中国象棋' },
+  { key: '/picsum', label: 'Picsum网络图片' },
 ]
 export default function Header() {
   const [index, setIndex] = useState(null)

@@ -1,8 +1,8 @@
 import { Button, Col, Input, Row, Switch, Upload } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
-import TextArea from 'antd/lib/input/TextArea'
 import React, { useEffect, useState } from 'react'
 import { QRCodeCanvas } from 'qrcode.react'
+const { TextArea } = Input
 /**
  * @author muxuhang
  * @description 二维码生成 
