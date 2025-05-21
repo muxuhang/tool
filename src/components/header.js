@@ -1,6 +1,6 @@
 import { Menu } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 const menuList = [
   { key: '/', label: '首页' },
   // { key: '/boot', label: '启动页生成' },
@@ -12,6 +12,7 @@ const menuList = [
 export default function Header() {
   const [index, setIndex] = useState(null)
   const navigate = useNavigate()
+  const location = useLocation()
   const getIndex = (hash = '') => {
     const path = hash?.replace('#', '') || '/'
     menuList.forEach((item, i) => {
@@ -21,8 +22,8 @@ export default function Header() {
     })
   }
   useEffect(() => {
-    getIndex(window.location.hash)
-  }, [])
+    getIndex(location.pathname)
+  }, [location])
   const handleClick = ({ key }) => {
     getIndex(key)
     navigate(key)

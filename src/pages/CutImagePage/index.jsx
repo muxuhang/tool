@@ -56,6 +56,7 @@ export default function CutImagePage() {
             config.width * image.height / image.width
           ctx.clearRect(0, 0, drawImageWidth * scale, drawImageHeight * scale)
           ctx.fillStyle = "rgba(255, 0, 0, 0)"
+          // ctx.fillStyle = "#ffffff"
           // 绘制圆角矩形路径
           ctx.beginPath()
           const x = 0, y = 0
